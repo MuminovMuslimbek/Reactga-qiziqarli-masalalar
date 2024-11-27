@@ -4,8 +4,20 @@ const Index = () => {
     const [input, setInput] = useState('');
     const [result, setResult] = useState('');
 
+    function validate() {
+        if (!input) {
+            alert('Emailni inputi ni kiriting!')
+            return false
+        }
+        return true
+    }
+
     function resultFun(e) {
         e.preventDefault();
+        let isValid = validate();
+        if (!isValid) {
+            return;
+        }
         if (input.includes('@') && input.includes('.com')) {
             setResult("Email to'g'ri kiritildi!");
         } else {
@@ -13,6 +25,7 @@ const Index = () => {
         }
         setInput('');
     }
+
 
     return (
         <div className="bg-white flex flex-col gap-[10px] p-[20px] rounded-[8px] max-w-[500px] w-full">

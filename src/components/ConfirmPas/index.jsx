@@ -5,8 +5,24 @@ const Index = () => {
     const [input2, setInput2] = useState('');
     const [result, setResult] = useState('');
 
+    function validate() {
+        if (!input1) {
+            alert('Ikkinchi masaladagi birinchi inputni qiymatni kiriting!')
+            return false
+        }
+        if (!input2) {
+            alert('Ikkinchi masaladagi ikkinchi inputni qiymatni kiriting!')
+            return false
+        }
+        return true
+    }
+
     function resultFun(e) {
         e.preventDefault();
+        let isValid = validate()
+        if (!isValid) {
+            return
+        }
         if (input1 === input2) {
             setResult("Parol mos keldi!");
         } else {
@@ -23,11 +39,11 @@ const Index = () => {
                 <label htmlFor="password1">
                     Password:
                 </label>
-                <input onChange={(e) => setInput1(e.target.value)} id="password1" type="password" placeholder="Enter.." className="p-[8px] border border-[#0a1050] rounded-[8px]"/>
+                <input onChange={(e) => setInput1(e.target.value)} id="password1" type="password" placeholder="Enter.." className="p-[8px] border border-[#0a1050] rounded-[8px]" />
                 <label htmlFor="password2">
                     Confirm Password:
                 </label>
-                <input onChange={(e) => setInput2(e.target.value)} id="password2" type="password" placeholder="Enter.." className="p-[8px] border border-[#0a1050] rounded-[8px]"/>
+                <input onChange={(e) => setInput2(e.target.value)} id="password2" type="password" placeholder="Enter.." className="p-[8px] border border-[#0a1050] rounded-[8px]" />
                 <button type="submit" className="p-[8px] bg-blue-500 text-white rounded-[8px] transition-[0.3s] active:scale-[0.98]">
                     Submit
                 </button>

@@ -4,8 +4,24 @@ const Index = () => {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
 
+    function validate() {
+        if (!input1) {
+            alert('oltinchi masaladagi birinchi inputni qiymatni kiriting!')
+            return false
+        }
+        if (!input2) {
+            alert('oltinchi masaladagi ikkinchi inputni qiymatni kiriting!')
+            return false
+        }
+        return true
+    }
+
     function resultFun(e) {
         e.preventDefault();
+        let isValid = validate()
+        if (!isValid) {
+            return
+        }
         let temp = input1;
         setInput1(input2);
         setInput2(temp);
